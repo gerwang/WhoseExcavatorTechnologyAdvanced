@@ -6,5 +6,6 @@ int main() {
     test.testVector();
     test.testString();
     test.testStack();
+    test.testLinkedList();
     return 0;
 }

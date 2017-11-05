@@ -13,13 +13,13 @@
  * @tparam T 元素的类型
  */
 template<typename T>
-class Vector {
+class ArrayList {
 public:
     typedef T value_type;
     typedef T *iterator;
     typedef const T *const_iterator;
     typedef std::size_t size_type;
-    typedef Vector<T> instance_type;
+    typedef ArrayList<T> instance_type;
     static const size_type MIN_SIZE;
 private:
     /*!
@@ -41,22 +41,22 @@ private:
     }
 
 public:
-    Vector() : m_begin(nullptr), m_size(0), m_cap(0) {}
+    ArrayList() : m_begin(nullptr), m_size(0), m_cap(0) {}
 
-    ~Vector() {
+    ~ArrayList() {
         clear();
     }
 
     template<typename InputIterator>
-    Vector(InputIterator first, InputIterator last): m_begin(nullptr), m_size(0), m_cap(0) {
+    ArrayList(InputIterator first, InputIterator last): m_begin(nullptr), m_size(0), m_cap(0) {
         assign(first, last);
     }
 
-    Vector(const instance_type &other) : m_begin(nullptr), m_size(0), m_cap(0) {
+    ArrayList(const instance_type &other) : m_begin(nullptr), m_size(0), m_cap(0) {
         assign(other.begin(), other.end());
     }
 
-    Vector(instance_type &&other) noexcept {
+    ArrayList(instance_type &&other) noexcept {
         m_begin = other.m_begin;
         other.m_begin = nullptr;
 
@@ -67,12 +67,12 @@ public:
         other.m_cap = 0;
     }
 
-    Vector &operator=(const instance_type &other) {
+    ArrayList &operator=(const instance_type &other) {
         assign(other.begin(), other.end());
         return *this;
     }
 
-    Vector &operator=(instance_type &&other) noexcept {
+    ArrayList &operator=(instance_type &&other) noexcept {
         m_begin = other.m_begin;
         other.m_begin = nullptr;
 
@@ -186,7 +186,7 @@ public:
             reserve(target_cap);
         }
 
-        for (size_type i = m_size - 1; i >= index; i--) {
+        for (int i = static_cast<int>(m_size) - 1; i >= static_cast<int>(index); i--) {
             m_begin[i + 1] = std::move(m_begin[i]);
         }
         m_size++;
@@ -289,10 +289,10 @@ public:
 };
 
 template<typename T>
-const typename Vector<T>::size_type Vector<T>::MIN_SIZE = 24;
+const typename ArrayList<T>::size_type ArrayList<T>::MIN_SIZE = 24;
 
 template<typename CharT, typename T>
-std::basic_ostream<CharT> &operator<<(std::basic_ostream<CharT> &out, const Vector<T> &vector) {
+std::basic_ostream<CharT> &operator<<(std::basic_ostream<CharT> &out, const ArrayList<T> &vector) {
     out << CharT('[');
     for (auto it = vector.begin(); it != vector.end(); ++it) {
         if (it != vector.begin()) {

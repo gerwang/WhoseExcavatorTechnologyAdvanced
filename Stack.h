@@ -5,9 +5,9 @@
 #ifndef WHOSEEXCAVATORTECHNOLOGYADVANCED_STACK_H
 #define WHOSEEXCAVATORTECHNOLOGYADVANCED_STACK_H
 
-#include "Vector.h"
+#include "ArrayList.h"
 
-template<typename T, typename Container=Vector<T> >
+template<typename T, typename Container=ArrayList<T> >
 class Stack {
     typedef T value_type;
 private:

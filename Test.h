@@ -15,6 +15,8 @@ public:
     void testString();
 
     void testStack();
+
+    void testLinkedList();
 };
 
 

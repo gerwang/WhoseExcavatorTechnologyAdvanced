@@ -4,12 +4,13 @@
 
 #include <iostream>
 #include "Test.h"
-#include "Vector.h"
+#include "ArrayList.h"
 #include "BasicString.h"
 #include "Stack.h"
+#include "LinkedList.h"
 
 void Test::testVector() {
-    Vector<int> vector;
+    ArrayList<int> vector;
     int a[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
     vector.assign(a, a + 10);
     for (int i = 0; i < 10; i++) {
@@ -43,4 +44,13 @@ void Test::testStack() {
         cout << stack.top() << endl;
         stack.pop();
     }
+}
+
+void Test::testLinkedList() {
+    int a[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+    LinkedList<int> list(a, a + 10);
+    for (int i = 0; i < 10; i++) {
+        list.push_back(i);
+    }
+    std::cout << list << std::endl;
 }

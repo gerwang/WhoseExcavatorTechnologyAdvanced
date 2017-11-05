@@ -5,13 +5,13 @@
 #define WHOSEEXCAVATORTECHNOLOGYADVANCED_STRING_H
 
 
-#include "Vector.h"
+#include "ArrayList.h"
 
 
 template<typename CharT>
-class BasicString : public Vector<CharT> {
+class BasicString : public ArrayList<CharT> {
 public:
-    typedef Vector<CharT> parent_type;
+    typedef ArrayList<CharT> parent_type;
     typedef BasicString<CharT> instance_type;
     typedef typename parent_type::iterator iterator;
     typedef typename parent_type::const_iterator const_iterator;
@@ -124,6 +124,6 @@ std::basic_ostream<CharT> &operator<<(std::basic_ostream<CharT> &out, BasicStrin
 }
 
 typedef BasicString<wchar_t> String;
-typedef BasicString<char> ShortString;
+typedef BasicString<char> ByteArray;
 
 #endif //WHOSEEXCAVATORTECHNOLOGYADVANCED_STRING_H
