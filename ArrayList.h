@@ -217,13 +217,13 @@ public:
 
     void erase(const_iterator pos) {
         size_type index = pos - m_begin;
+        if (m_size * 2 < m_cap && MIN_SIZE * 2 <= m_cap) {
+            reallocate(m_cap / 2);
+        }
         for (size_type i = index; i + 1 < m_size; i++) {
             m_begin[i] = std::move(m_begin[i + 1]);
         }
         m_size--;
-        if (m_size * 2 < m_cap && MIN_SIZE * 2 <= m_cap) {
-            reallocate(m_cap / 2);
-        }
     }
 
 
@@ -285,6 +285,13 @@ public:
 
     const value_type &at(size_type index) const {
         return m_begin[index];
+    }
+
+    void resize(size_t nextSize, const value_type &fillVar = value_type()) {
+        reserve(nextSize);
+        while (size() < nextSize) {
+            push_back(fillVar);
+        }
     }
 };
 

@@ -19,6 +19,8 @@ public:
     void testLinkedList();
 
     void testHashSet();
+
+    void testConvert();
 };
 
 

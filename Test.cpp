@@ -3,12 +3,15 @@
 //
 
 #include <iostream>
+#include <fstream>
+#include <sstream>
 #include "Test.h"
 #include "ArrayList.h"
 #include "BasicString.h"
 #include "Stack.h"
 #include "LinkedList.h"
 #include "HashSet.h"
+#include "StringConvert.h"
 
 void Test::testVector() {
     ArrayList<int> vector;
@@ -64,4 +67,18 @@ void Test::testHashSet() {
     cout << set.bucket_count() << " " << set.load_factor() << endl;
     cout << set.toArrayList() << endl;
     cout << set.count(2) << endl;
+}
+
+void Test::testConvert() {
+    std::ifstream fin("test.txt");
+    std::string str((std::istreambuf_iterator<char>(fin)),
+                    std::istreambuf_iterator<char>());
+    cout << str.length() << endl;
+    String res = StringConvert::fromStdString(str, ".936");
+    cout << res.length() << endl;
+    cout << ArrayList<wchar_t>(res) << endl;
+    std::string tmp = StringConvert::toStdString(res, ".936");
+    cout << tmp.length() << endl;
+    std::ofstream fout("test_output.txt");
+    fout << tmp;
 }

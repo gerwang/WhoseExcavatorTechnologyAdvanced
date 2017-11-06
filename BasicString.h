@@ -34,7 +34,7 @@ public:
     BasicString() {}
 
     template<typename OtherCharT>
-    explicit BasicString(OtherCharT *cstr) {
+    BasicString(OtherCharT *cstr) {// NOLINT
         while (*cstr != OtherCharT('\0')) {
             this->push_back(CharT(*cstr));
             cstr++;

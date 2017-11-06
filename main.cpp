@@ -3,10 +3,11 @@
 
 int main() {
     Test test;
-    test.testVector();
-    test.testString();
-    test.testStack();
-    test.testLinkedList();
-    test.testHashSet();
+//    test.testVector();
+//    test.testString();
+//    test.testStack();
+//    test.testLinkedList();
+//    test.testHashSet();
+    test.testConvert();
     return 0;
 }
