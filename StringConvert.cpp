@@ -4,6 +4,7 @@
 
 #include "StringConvert.h"
 #include <locale>
+#include <fstream>
 
 String StringConvert::fromStdString(const std::string &str, ByteArray localeString) {
     std::setlocale(LC_ALL, localeString.c_str());
@@ -27,4 +28,17 @@ std::string StringConvert::toStdString(String wstr, ByteArray localeString) {
     std::string res(temp);
     delete[] temp;
     return res;
+}
+
+String StringConvert::fromFile(ByteArray fileName) {
+    std::ifstream fin(fileName.c_str());
+    std::string str((std::istreambuf_iterator<char>()),
+                    std::istreambuf_iterator<char>());
+    return fromStdString(str);
+}
+
+void StringConvert::toFile(const String &output, ByteArray fileName) {
+    std::string converted(toStdString(output));
+    std::ofstream fout(fileName.c_str());
+    fout << converted;
 }

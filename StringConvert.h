@@ -11,9 +11,18 @@
 
 class StringConvert {
 public:
-    static String fromStdString(const std::string &str, ByteArray localeString);
+    static String fromStdString(const std::string &str, ByteArray localeString = "");
 
-    static std::string toStdString(String wstr, ByteArray localeString);
+    static std::string toStdString(String wstr, ByteArray localeString = "");
+
+    /*!
+     * @attention 不支持在代码中写中文的文件名
+     * @param fileName
+     * @return
+     */
+    static String fromFile(ByteArray fileName);
+
+    static void toFile(const String &output, ByteArray fileName);
 };
 
 

@@ -6,6 +6,7 @@
 
 
 #include "ArrayList.h"
+#include "Stack.h"
 
 
 template<typename CharT>
@@ -23,7 +24,7 @@ public:
      * @param endIndex 不包含自身
      * @return 新构建的子串
      */
-    BasicString substr(size_type startIndex, size_type endIndex = parent_type::size()) {
+    BasicString substr(size_type startIndex, size_type endIndex = parent_type::size()) const {
         BasicString res;
         for (size_type i = startIndex; i < endIndex; i++) {
             res.push_back(this->operator[](i));
@@ -38,6 +39,13 @@ public:
         while (*cstr != OtherCharT('\0')) {
             this->push_back(CharT(*cstr));
             cstr++;
+        }
+    }
+
+    template<typename OtherCharT>
+    BasicString(const BasicString<OtherCharT> &other) {// NOLINT
+        for (size_t i = 0; i < other.size(); i++) {
+            this->push_back(CharT(other[i]));
         }
     }
 
@@ -100,6 +108,28 @@ public:
         delete[] fail;
         return res;
     }
+
+    static instance_type number(int x) {
+        Stack<CharT> stack;
+        bool negative = false;
+        if (x < 0) {
+            x = -x;
+            negative = true;
+        }
+        while (x != 0) {
+            stack.push(CharT('0') + x % 10);
+            x /= 10;
+        }
+        if (negative) {
+            stack.push(CharT('-'));
+        }
+        instance_type res;
+        while (!stack.empty()) {
+            res.push_back(stack.top());
+            stack.pop();
+        }
+        return res;
+    }
 };
 
 template<typename CharT1, typename CharT2>
@@ -122,6 +152,21 @@ std::basic_ostream<CharT> &operator<<(std::basic_ostream<CharT> &out, BasicStrin
     out << string.c_str();
     return out;
 }
+
+template<typename CharT1, typename CharT2>
+BasicString<CharT1> operator+(const BasicString<CharT1> &a, const BasicString<CharT2> &b) {
+    return a + BasicString<CharT1>(b);
+};
+
+template<typename CharT1, typename CharT2>
+BasicString<CharT1> operator+(const BasicString<CharT1> &a, const CharT2 *b) {
+    return a + BasicString<CharT1>(b);
+};
+
+template<typename CharT1, typename CharT2>
+BasicString<CharT2> operator+(const CharT1 *a, const BasicString<CharT2> &b) {
+    return BasicString<CharT2>(a) + b;
+};
 
 typedef BasicString<wchar_t> String;
 typedef BasicString<char> ByteArray;

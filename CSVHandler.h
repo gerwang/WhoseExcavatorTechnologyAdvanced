@@ -12,7 +12,7 @@
 class CSVHandler {
     ArrayList<ArrayList<String>> csv;
 
-    void load(String fileName);
+    void load(const ByteArray &fileName);
 
     void save(String fileName);
 };

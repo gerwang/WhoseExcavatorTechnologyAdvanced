@@ -74,11 +74,13 @@ void Test::testConvert() {
     std::string str((std::istreambuf_iterator<char>(fin)),
                     std::istreambuf_iterator<char>());
     cout << str.length() << endl;
-    String res = StringConvert::fromStdString(str, ".936");
+    String res = StringConvert::fromStdString(str);
     cout << res.length() << endl;
     cout << ArrayList<wchar_t>(res) << endl;
-    std::string tmp = StringConvert::toStdString(res, ".936");
+    std::string tmp = StringConvert::toStdString(res);
     cout << tmp.length() << endl;
     std::ofstream fout("test_output.txt");
     fout << tmp;
+    String my = String::number(-233);
+    std::cout << my << endl;
 }

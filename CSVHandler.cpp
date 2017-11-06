@@ -3,12 +3,49 @@
 //
 
 #include "CSVHandler.h"
-#include <fstream>
-#include <string>
+#include "StringConvert.h"
+#include <cwchar>
+#include "Logger.h"
 
-void CSVHandler::load(String fileName) {
-    std::ifstream fin("");
+String stripQuote(const String &str, int start, int end) {
+    while (start < end && iswspace((wint_t) str[start]) || str[start] == '"') {
+        start++;
+    }
+    while (start < end && iswspace((wint_t) str[end - 1]) || str[end - 1] == '"') {
+        end--;
+    }
+    return str.substr(static_cast<unsigned int>(start), static_cast<unsigned int>(end));
+}
 
+void CSVHandler::load(const ByteArray &fileName) {
+    String input = StringConvert::fromFile(fileName);
+    int index = 0;
+    int row = 0;
+    while (index < input.size()) {
+        int end_index = index;
+        while (end_index < input.size() && input[end_index] != ',' && input[end_index] != '\n') {
+            end_index++;
+        }
+        String element = stripQuote(input, index, end_index);
+        if (element.length() > 0) {
+            if (end_index < input.size()) {
+
+                if (input[end_index] == ',') {//comma
+                    //pass
+                } else if (input[end_index] == '\n') {//newline
+                    row++;
+                } else {
+                    Logger::slog("unexecpted seperate value at " + fileName + " at line " + String::number(row + 1));
+                }
+
+                if (row == csv.size()) {
+                    csv.push_back(ArrayList<String>());
+                }
+                csv[row].push_back(std::move(element));
+            }
+        }
+        index = end_index + 1;
+    }
 }
 
 void CSVHandler::save(String fileName) {
