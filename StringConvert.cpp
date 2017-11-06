@@ -32,7 +32,7 @@ std::string StringConvert::toStdString(String wstr, ByteArray localeString) {
 
 String StringConvert::fromFile(ByteArray fileName) {
     std::ifstream fin(fileName.c_str());
-    std::string str((std::istreambuf_iterator<char>()),
+    std::string str((std::istreambuf_iterator<char>(fin)),
                     std::istreambuf_iterator<char>());
     return fromStdString(str);
 }

@@ -3,12 +3,12 @@
 //
 
 #include "Logger.h"
-#include <iostream>
+#include "StringConvert.h"
 
 void Logger::log(const String &str) {
 #ifdef DEBUG
     m_log.open(m_logFileName.c_str(), std::ios::app);
-    m_log << str << std::endl;
+    m_log << StringConvert::toStdString(str) << std::endl;
     m_log.close();
 #endif
 }

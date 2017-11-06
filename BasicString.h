@@ -130,6 +130,21 @@ public:
         }
         return res;
     }
+
+    template<typename OtherCharT>
+    instance_type &operator+=(OtherCharT *other) {
+        while (*other) {
+            push_back(*(other++));
+        }
+        return *this;
+    }
+
+    instance_type &operator+=(const instance_type &other) {
+        for (auto &x:other) {
+            this->push_back(x);
+        }
+        return *this;
+    }
 };
 
 template<typename CharT1, typename CharT2>

@@ -11,7 +11,7 @@
 
 class CSVHandler {
     ArrayList<ArrayList<String>> csv;
-
+public:
     void load(const ByteArray &fileName);
 
     void save(String fileName);

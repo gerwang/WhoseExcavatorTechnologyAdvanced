@@ -12,6 +12,7 @@
 #include "LinkedList.h"
 #include "HashSet.h"
 #include "StringConvert.h"
+#include "CSVHandler.h"
 
 void Test::testVector() {
     ArrayList<int> vector;
@@ -83,4 +84,10 @@ void Test::testConvert() {
     fout << tmp;
     String my = String::number(-233);
     std::cout << my << endl;
+}
+
+void Test::testCSV() {
+    CSVHandler handler;
+    handler.load("result.csv");
+    handler.save("output_result.csv");
 }
