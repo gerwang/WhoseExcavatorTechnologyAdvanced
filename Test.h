@@ -17,6 +17,8 @@ public:
     void testStack();
 
     void testLinkedList();
+
+    void testHashSet();
 };
 
 

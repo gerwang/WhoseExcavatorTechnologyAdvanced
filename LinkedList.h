@@ -6,6 +6,7 @@
 #define WHOSEEXCAVATORTECHNOLOGYADVANCED_LINKEDLIST_H
 
 #include <utility>
+#include "Utility.h"
 
 template<typename T>
 struct LinkedNode {
@@ -69,13 +70,13 @@ public:
         return !(*this == other);
     }
 
-    iterator_type &&operator++(int) {
+    iterator_type operator++(int) {
         iterator_type res(*this);
         current = current->nxt;
         return std::move(res);
     }
 
-    iterator_type &&operator--(int) {
+    iterator_type operator--(int) {
         iterator_type res(*this);
         current = current->pre;
         return std::move(res);
@@ -94,18 +95,18 @@ private:
     node_type *m_root;
     size_type m_size;
 public:
-    LinkedList() : m_size(0) {
+    LinkedList() {
         init_root();
     }
 
-    LinkedList(instance_type &&other) noexcept {
+    explicit LinkedList(instance_type &&other) noexcept {
         m_root = other.m_root;
         other.m_root = nullptr;
         m_size = other.m_size;
         other.m_size = 0;
     }
 
-    LinkedList(const instance_type &other) {
+    explicit LinkedList(const instance_type &other) {
         init_root();
         assign(other.begin(), other.end());
     }
@@ -114,6 +115,22 @@ public:
     LinkedList(InputIterator first, InputIterator last) {
         init_root();
         assign(first, last);
+    }
+
+    LinkedList &operator=(instance_type &&other)noexcept {
+        clear();
+        delete m_root;
+        m_root = other.m_root;
+        other.m_root = nullptr;
+        m_size = other.m_size;
+        other.m_size = 0;
+        return *this;
+    }
+
+    LinkedList &operator=(const instance_type &other) {
+        clear();
+        assign(other.begin(), other.end());
+        return *this;
     }
 
     iterator begin() {
@@ -147,12 +164,14 @@ public:
     }
 
     void clear() {
-        iterator it = begin();
-        while (it != end()) {
-            erase(it++);
+        if (m_root != nullptr) {
+            iterator it = begin();
+            while (it != end()) {
+                erase(it++);
+            }
+            m_root->pre = m_root->nxt = m_root;
+            m_size = 0;
         }
-        m_root->pre = m_root->nxt = m_root;
-        m_size = 0;
     }
 
     /*!
@@ -196,6 +215,25 @@ public:
         return m_size;
     }
 
+    iterator find(const value_type &val) {
+        for (iterator it = begin(); it != end(); ++it) {
+            if (*it == val) {
+                return it;
+            }
+        }
+        return end();
+    }
+
+    int count(const value_type &val) {
+        int res = 0;
+        for (iterator it = begin(); it != end(); ++it) {
+            if (*it == val) {
+                res++;
+            }
+        }
+        return res;
+    }
+
 private:
     /*!
      * 将elem插入到node之前
@@ -225,7 +263,7 @@ private:
     }
 
     void init_root() {
-        delete m_root;
+        m_size = 0;
         m_root = new node_type();
         m_root->data = value_type();
         m_root->pre = m_root->nxt = m_root;

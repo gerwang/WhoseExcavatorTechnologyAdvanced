@@ -239,7 +239,7 @@ public:
         erase(end() - 1);
     }
 
-    instance_type &&operator+(const instance_type &other) {
+    instance_type operator+(const instance_type &other) {
         instance_type res(*this);
         for (auto x:other) {
             res.push_back(x);

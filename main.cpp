@@ -7,5 +7,6 @@ int main() {
     test.testString();
     test.testStack();
     test.testLinkedList();
+    test.testHashSet();
     return 0;
 }

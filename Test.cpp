@@ -8,6 +8,7 @@
 #include "BasicString.h"
 #include "Stack.h"
 #include "LinkedList.h"
+#include "HashSet.h"
 
 void Test::testVector() {
     ArrayList<int> vector;
@@ -53,4 +54,14 @@ void Test::testLinkedList() {
         list.push_back(i);
     }
     std::cout << list << std::endl;
+}
+
+void Test::testHashSet() {
+    HashSet<int> set;
+    for (int i = 0; i < 100; i++) {
+        set.insert(i);
+    }
+    cout << set.bucket_count() << " " << set.load_factor() << endl;
+    cout << set.toArrayList() << endl;
+    cout << set.count(2) << endl;
 }

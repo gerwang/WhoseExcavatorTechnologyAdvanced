@@ -23,7 +23,7 @@ public:
      * @param endIndex 不包含自身
      * @return 新构建的子串
      */
-    BasicString &&substr(size_type startIndex, size_type endIndex = parent_type::size()) {
+    BasicString substr(size_type startIndex, size_type endIndex = parent_type::size()) {
         BasicString res;
         for (size_type i = startIndex; i < endIndex; i++) {
             res.push_back(this->operator[](i));
