@@ -7,6 +7,7 @@
 
 #include <utility>
 #include "ArrayList.h"
+#include "BasicString.h"
 
 template<typename T>
 struct Hasher {
@@ -57,6 +58,11 @@ struct Pair {
 template<typename T1, typename T2>
 Pair<T1, T2> makePair(const T1 &x, const T2 &y) {
     return Pair<T1, T2>(x, y);
+};
+
+template<typename T2>
+Pair<String, T2> makePair(const char *a, const T2 &b) {
+    return Pair<String, T2>(String(a), b);
 };
 
 #endif //WHOSEEXCAVATORTECHNOLOGYADVANCED_UTILITY_H

@@ -32,6 +32,10 @@ public:
     bool empty() const {
         return container.empty();
     }
+
+    Container &getContainer() {
+        return container;
+    }
 };
 
 

@@ -99,14 +99,14 @@ public:
         init_root();
     }
 
-    explicit LinkedList(instance_type &&other) noexcept {
+    LinkedList(instance_type &&other) noexcept {
         m_root = other.m_root;
         other.m_root = nullptr;
         m_size = other.m_size;
         other.m_size = 0;
     }
 
-    explicit LinkedList(const instance_type &other) {
+    LinkedList(const instance_type &other) {
         init_root();
         assign(other.begin(), other.end());
     }

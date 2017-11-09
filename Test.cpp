@@ -13,6 +13,10 @@
 #include "HashSet.h"
 #include "StringConvert.h"
 #include "CSVHandler.h"
+#include "HttpRequest.h"
+#include "Logger.h"
+#include "DomNode.h"
+#include "HTMLParser.h"
 
 void Test::testVector() {
     ArrayList<int> vector;
@@ -90,4 +94,23 @@ void Test::testCSV() {
     CSVHandler handler;
     handler.load("result.csv");
     handler.save("output_result.csv");
+}
+
+void Test::testHttp() {
+    HttpRequest::startUp();
+    HttpRequest request;
+    Logger::slog(request.get("http://bbs.cehome.com/thread-615342-1-1.html"));
+    HttpRequest::tearDown();
+}
+
+void Test::testHtmlParse() {
+    HttpRequest::startUp();
+    HttpRequest request;
+    String source = request.get("http://bbs.cehome.com/thread-615342-1-1.html");
+    HTMLParser parser;
+    DomNode *document = parser.parseHTML(source);
+    StringConvert::toFile(source, "src.html");
+    StringConvert::toFile(document->innerHTML(), "dest.html");
+    delete document;
+    HttpRequest::tearDown();
 }

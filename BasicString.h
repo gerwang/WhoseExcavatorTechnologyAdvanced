@@ -24,7 +24,7 @@ public:
      * @param endIndex 不包含自身
      * @return 新构建的子串
      */
-    BasicString substr(size_type startIndex, size_type endIndex = parent_type::size()) const {
+    instance_type substr(size_type startIndex, size_type endIndex) const {
         BasicString res;
         for (size_type i = startIndex; i < endIndex; i++) {
             res.push_back(this->operator[](i));
@@ -134,7 +134,7 @@ public:
     template<typename OtherCharT>
     instance_type &operator+=(OtherCharT *other) {
         while (*other) {
-            push_back(*(other++));
+            this->push_back(*(other++));
         }
         return *this;
     }
@@ -145,11 +145,31 @@ public:
         }
         return *this;
     }
+
+    bool match(const instance_type &pattern, size_t start_index = 0) const {
+        if (start_index + pattern.size() > this->size()) {
+            return false;
+        }
+        for (size_t i = 0; i < pattern.size(); i++) {
+            if (this->operator[](start_index + i) != pattern[i]) {
+                return false;
+            }
+        }
+        return true;
+    }
 };
 
 template<typename CharT1, typename CharT2>
 bool operator==(const BasicString<CharT1> &a, const BasicString<CharT2> &b) {
-    return a == BasicString<CharT1>(b);
+    if (a.length() != b.length()) {
+        return false;
+    }
+    for (size_t i = 0; i < a.length(); i++) {
+        if (a[i] != b[i]) {
+            return false;
+        }
+    }
+    return true;
 };
 
 template<typename CharT1, typename CharT2>
@@ -166,6 +186,15 @@ template<typename CharT>
 std::basic_ostream<CharT> &operator<<(std::basic_ostream<CharT> &out, BasicString<CharT> string) {
     out << string.c_str();
     return out;
+}
+
+template<typename CharT>
+BasicString<CharT> operator+(const BasicString<CharT> &a, const BasicString<CharT> &b) {
+    BasicString<CharT> res(a);
+    for (auto &x:b) {
+        res.push_back(x);
+    }
+    return res;
 }
 
 template<typename CharT1, typename CharT2>

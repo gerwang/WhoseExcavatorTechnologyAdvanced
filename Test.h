@@ -23,6 +23,10 @@ public:
     void testConvert();
 
     void testCSV();
+
+    void testHttp();
+
+    void testHtmlParse();
 };
 
 

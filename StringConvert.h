@@ -8,12 +8,13 @@
 #include "BasicString.h"
 #include <string>
 #include <cwchar>
+#include <windows.h>
 
 class StringConvert {
 public:
-    static String fromStdString(const std::string &str, ByteArray localeString = "");
+    static String fromStdString(const std::string &str, UINT codePage = CP_ACP);
 
-    static std::string toStdString(String wstr, ByteArray localeString = "");
+    static std::string toStdString(String wstr, UINT codePage = CP_ACP);
 
     /*!
      * @attention 不支持在代码中写中文的文件名

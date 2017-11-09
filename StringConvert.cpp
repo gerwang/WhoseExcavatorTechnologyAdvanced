@@ -5,28 +5,29 @@
 #include "StringConvert.h"
 #include <locale>
 #include <fstream>
+#include <cstring>
 
-String StringConvert::fromStdString(const std::string &str, ByteArray localeString) {
-    std::setlocale(LC_ALL, localeString.c_str());
-    size_t len;
-    mbstowcs_s(&len, nullptr, 0, str.c_str(), str.length());
-    len++;//see http://en.cppreference.com/w/c/string/multibyte/wcstombs
-    auto *temp = new wchar_t[len];
-    mbstowcs_s(&len, temp, len, str.c_str(), str.length());
-    String res(temp);
-    delete[] temp;
+/*!
+ *
+ * @param str
+ * @param localeString
+ * @return
+ */
+String StringConvert::fromStdString(const std::string &str, UINT codePage) {
+    int len = MultiByteToWideChar(codePage, 0, str.c_str(), -1, nullptr, 0);
+    auto w_buffer = new wchar_t[len];
+    MultiByteToWideChar(codePage, 0, str.c_str(), -1, w_buffer, len);
+    String res(w_buffer);
+    delete[] w_buffer;
     return res;
 }
 
-std::string StringConvert::toStdString(String wstr, ByteArray localeString) {
-    std::setlocale(LC_ALL, localeString.c_str());
-    size_t len;
-    wcstombs_s(&len, nullptr, 0, wstr.c_str(), 0);
-    len++;
-    auto *temp = new char[len];
-    wcstombs_s(&len, temp, len, wstr.c_str(), len);
-    std::string res(temp);
-    delete[] temp;
+std::string StringConvert::toStdString(String wstr, UINT codePage) {
+    int len = WideCharToMultiByte(codePage, 0, wstr.c_str(), -1, nullptr, 0, nullptr, FALSE);
+    auto c_buffer = new char[len];
+    WideCharToMultiByte(codePage, 0, wstr.c_str(), -1, c_buffer, len, nullptr, FALSE);
+    std::string res(c_buffer);
+    delete[] c_buffer;
     return res;
 }
 
