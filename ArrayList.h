@@ -9,7 +9,7 @@
 #include <iostream>
 
 /*!
- * 仿照stl实现的vector，采用了std::move()进行优化
+ * @brief 仿照stl实现的vector，采用了std::move()进行优化
  * @tparam T 元素的类型
  */
 template<typename T>
@@ -30,6 +30,10 @@ private:
     iterator m_begin;
     size_type m_size, m_cap;
 
+    /*!
+     * vector的实现，重新分配数组长度
+     * @param next_cap 新的数组容量上限
+     */
     void reallocate(size_type next_cap) {
         iterator next_begin = new value_type[next_cap];
         for (size_type i = 0; i < m_size; i++) {
@@ -43,7 +47,7 @@ private:
 public:
     ArrayList() : m_begin(nullptr), m_size(0), m_cap(0) {}
 
-    ~ArrayList() {
+    virtual ~ArrayList() {
         clear();
     }
 
@@ -72,6 +76,11 @@ public:
         return *this;
     }
 
+    /*!
+     * 移动赋值，不消耗新的资源
+     * @param other 赋值的源头
+     * @return 当前对象
+     */
     ArrayList &operator=(instance_type &&other) noexcept {
         m_begin = other.m_begin;
         other.m_begin = nullptr;
@@ -110,6 +119,9 @@ public:
     }
 
     void clear() {
+        for (size_type i = 0; i < m_cap; i++) {
+            m_begin[i].~T();
+        }
         delete[] m_begin;
         m_begin = nullptr;
         m_size = m_cap = 0;
@@ -167,6 +179,11 @@ public:
         return m_begin[index];
     }
 
+    /*!
+     * 预留空间
+     * @param next_cap 新的容量
+     * @note 如果指定容量小于等于当前容量，容量并不会变小
+     */
     void reserve(size_type next_cap) {
         if (m_cap < next_cap) {
             reallocate(next_cap);
@@ -254,7 +271,7 @@ public:
         return *this;
     }
 
-    bool operator==(const instance_type &other) {
+    bool operator==(const instance_type &other) const {
         if (size() != other.size()) {
             return false;
         }
@@ -266,11 +283,11 @@ public:
         return true;
     }
 
-    bool operator!=(const instance_type &other) {
+    bool operator!=(const instance_type &other) const {
         return !(*this == other);
     }
 
-    bool operator<(const instance_type &other) {
+    bool operator<(const instance_type &other) const {
         for (size_type i = 0; i < size() && i < other.size(); i++) {
             if (m_begin[i] < other.m_begin[i] || other.m_begin[i] < m_begin[i]) {
                 return m_begin[i] < other.m_begin[i];

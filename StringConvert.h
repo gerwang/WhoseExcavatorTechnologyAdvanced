@@ -12,8 +12,21 @@
 
 class StringConvert {
 public:
+    /*!
+     * 将char形式的字符串转换成宽字符串
+     * @param str 单字节存储的字符串
+     * @param codePage 代码页，默认为ANSI
+     * @return 转换后的宽字符串
+     * @note utf-8的codepage是CP_UTF8
+     */
     static String fromStdString(const std::string &str, UINT codePage = CP_ACP);
 
+    /*!
+     * 将宽字符串转换成窄字符串
+     * @param wstr
+     * @param codePage
+     * @return
+     */
     static std::string toStdString(String wstr, UINT codePage = CP_ACP);
 
     /*!
@@ -21,9 +34,15 @@ public:
      * @param fileName
      * @return
      */
-    static String fromFile(ByteArray fileName);
+    static String fromFile(ByteArray fileName, UINT codePage = CP_ACP);
 
-    static void toFile(const String &output, ByteArray fileName);
+    /*!
+     * 清空文件，将字符串保存到文件当中
+     * @param output
+     * @param fileName
+     * @param codePage
+     */
+    static void toFile(const String &output, ByteArray fileName, UINT codePage = CP_ACP);
 };
 
 

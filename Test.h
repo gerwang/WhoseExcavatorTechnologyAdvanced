@@ -4,7 +4,9 @@
 
 #ifndef WHOSEEXCAVATORTECHNOLOGYADVANCED_TEST_H
 #define WHOSEEXCAVATORTECHNOLOGYADVANCED_TEST_H
-
+/*!
+ * @brief 供调试的测试类,不会应用在最终的代码中
+ */
 
 using namespace std;
 
@@ -27,6 +29,8 @@ public:
     void testHttp();
 
     void testHtmlParse();
+
+    void testFileHtmlParse();
 };
 
 

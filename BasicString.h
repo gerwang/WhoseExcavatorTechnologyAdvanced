@@ -3,7 +3,10 @@
 //
 #ifndef WHOSEEXCAVATORTECHNOLOGYADVANCED_STRING_H
 #define WHOSEEXCAVATORTECHNOLOGYADVANCED_STRING_H
-
+/*!
+ * @brief 采用vector策略的字符串实现
+ * @attention 没有实现copy-on-write, 但是有std::move()优化
+ */
 
 #include "ArrayList.h"
 #include "Stack.h"
@@ -17,6 +20,8 @@ public:
     typedef typename parent_type::iterator iterator;
     typedef typename parent_type::const_iterator const_iterator;
     typedef typename parent_type::size_type size_type;
+
+    ~BasicString() = default;
 
     /*!
      * 返回下标为[startIndex,endIndex)的子串
@@ -52,6 +57,7 @@ public:
     /*!
      * @attention 不优美的实现，在修改了字符串之后一定要重新调用c_str()来保证最后有终止字符
      * @return C风格的字符串
+     * @todo 使字符串时时刻刻都在结尾有一个'\0'
      */
     CharT *c_str() {
         this->push_back(CharT('\0'));
@@ -109,6 +115,11 @@ public:
         return res;
     }
 
+    /*!
+     * 将数转换成字符串
+     * @param x 待转换的整数，可以为负值
+     * @return 转换后的十进制字符串
+     */
     static instance_type number(int x) {
         Stack<CharT> stack;
         bool negative = false;
@@ -116,10 +127,10 @@ public:
             x = -x;
             negative = true;
         }
-        while (x != 0) {
+        do {
             stack.push(CharT('0') + x % 10);
             x /= 10;
-        }
+        } while (x != 0);
         if (negative) {
             stack.push(CharT('-'));
         }
@@ -146,6 +157,11 @@ public:
         return *this;
     }
 
+    /*!
+     * * @param pattern 待匹配的模式串
+     * @param start_index 开始匹配的下标
+     * @return 是否从index开始和pattern刚好匹配
+     */
     bool match(const instance_type &pattern, size_t start_index = 0) const {
         if (start_index + pattern.size() > this->size()) {
             return false;

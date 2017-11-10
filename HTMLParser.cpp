@@ -3,12 +3,16 @@
 //
 #include "HTMLParser.h"
 #include "Stack.h"
+#include "Logger.h"
 
 const int HTMLParser::MaxTolerance = 10;
 
 DomNode *HTMLParser::parseHTML(const String &html) {
     Stack<DomNode *> stack;
     int index = 0;
+    while (index < html.length() && !html.match("<html", static_cast<size_t>(index))) {//skip <!DOCTYPE
+        index++;
+    }
     stack.push(new DomNode(DomNode::Document));
     while (true) {
         index = nextNotSpace(html, index);
@@ -18,6 +22,9 @@ DomNode *HTMLParser::parseHTML(const String &html) {
         DomNode *node;
         int stackDelta;
         index = parseNode(html, index, node, stackDelta);
+
+//        Logger::slog(String::number(node->m_nodeType) + " " + String::number(stackDelta) + " " + node->m_nodeName);
+
         if (stackDelta == 1) {//open tag
             stack.top()->appendChild(node);
             stack.push(node);
@@ -37,6 +44,9 @@ DomNode *HTMLParser::parseHTML(const String &html) {
                     break;
                 }
             }
+//            if (!ok) {
+//                Logger::slog("improper close tag " + node->m_nodeName);
+//            }
 
             while (ok) {
                 if (stack.top()->m_nodeName == node->m_nodeName) {
@@ -63,13 +73,13 @@ int HTMLParser::nextNotSpace(const String &html, int index) {
 }
 
 int HTMLParser::parseNode(const String &html, int index, DomNode *&node, int &stackDelta) {
-    if (html.match("<--", static_cast<size_t>(index))) {//注释
+    if (html.match("<!--", static_cast<size_t>(index))) {//注释
         stackDelta = 0;
         int end_index = index;
         while (end_index < html.length() && !html.match("-->", static_cast<size_t>(end_index))) {
             end_index++;
         }
-        index += 3;
+        index += 4;
         node = new DomNode(DomNode::Comment);
         node->m_nodeName = pureText(html, index, end_index);
         end_index += 3;
@@ -102,6 +112,7 @@ int HTMLParser::parseNode(const String &html, int index, DomNode *&node, int &st
         if (DomNode::isSelfClosed(node->m_nodeName)) {
             stackDelta = 0;
         }
+        index = nextNotSpace(html, end_index);
         //
 
         //parse normal tag
@@ -130,7 +141,7 @@ int HTMLParser::parseNode(const String &html, int index, DomNode *&node, int &st
                     while (end_index < html.length() && html[end_index] != '"') {
                         end_index++;
                     }
-                    value = html.substr(static_cast<unsigned int>(index + 1), static_cast<unsigned int>(end_index));
+                    value = pureText(html, index + 1, end_index);
                 }
                 if (key == "class") {
                     node->m_className = value;
@@ -146,7 +157,7 @@ int HTMLParser::parseNode(const String &html, int index, DomNode *&node, int &st
         if (DomNode::isNoEscape(node->m_nodeName)) {
             stackDelta = 0;
             index = nextNotSpace(html, end_index);
-            String end_string = "<" + node->m_nodeName + "/>";
+            String end_string = "</" + node->m_nodeName + ">";
             while (end_index < html.length() && !html.match(end_string, static_cast<size_t>(end_index))) {
                 end_index++;
             }
@@ -175,7 +186,14 @@ String HTMLParser::pureText(const String &html, int index, int end_index) {
     String res;
     while (index < end_index) {
         if (html.match("&#", static_cast<size_t>(index))) {
-            int semi_index = nextSemiColon(html, index);
+            int semi_index = nextSemiColon(html, index, end_index);
+
+            if (html[semi_index] != ';') {
+                res.push_back(html[index]);
+                index++;
+                continue;
+            }
+
             int textCode = 0;
             index += 2;
             while (index < semi_index) {
@@ -183,27 +201,37 @@ String HTMLParser::pureText(const String &html, int index, int end_index) {
                 index++;
             }
             res.push_back(static_cast<wchar_t >(textCode));
+
             index = semi_index + 1;
         } else if (html.match("&", static_cast<size_t>(index))) {
-            int semi_index = nextSemiColon(html, index);
+            int semi_index = nextSemiColon(html, index, end_index);
+
+            if (html[semi_index] != ';') {
+                res.push_back(html[index]);
+                index++;
+                continue;
+            }
+
             int textCode = DomNode::getEscapeCode(html.substr(static_cast<unsigned int>(index + 1),
                                                               static_cast<unsigned int>(semi_index)));
             if (textCode == -1) {
                 res.push_back(html[index]);
                 index++;
-            } else {
-                res.push_back(static_cast<wchar_t>(textCode));
-                index = semi_index + 1;
+                continue;
             }
+
+            res.push_back(static_cast<wchar_t>(textCode));
+            index = semi_index + 1;
         } else {
             res.push_back(html[index]);
             index++;
         }
     }
+    return res;
 }
 
-int HTMLParser::nextSemiColon(const String &html, int index) {
-    while (index < html.length() && html[index] != ';') {
+int HTMLParser::nextSemiColon(const String &html, int index, int end_index) {
+    while (index < end_index && html[index] != ';') {
         index++;
     }
     return index;

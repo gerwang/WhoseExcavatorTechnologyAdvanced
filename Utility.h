@@ -11,7 +11,7 @@
 
 template<typename T>
 struct Hasher {
-    std::size_t operator()(const T &x) {
+    std::size_t operator()(const T &x) const {
         return static_cast<std::size_t>(*(&x));
     }
 };
@@ -22,8 +22,8 @@ struct Hasher {
  * @tparam Factor 进制
  */
 template<typename T>
-struct Hasher<ArrayList<T>> {
-    std::size_t operator()(const ArrayList<T> &x) const {
+struct Hasher<BasicString<T>> {
+    std::size_t operator()(const BasicString<T> &x) const {
         size_t res = 0;
         for (size_t i = 0; i < x.size(); i++) {
             res = res * 13 + x[i];

@@ -10,32 +10,38 @@
 #include "LinkedList.h"
 #include <cmath>
 
-bool is_prime(size_t x) {
-    auto m = static_cast<int>(sqrt(x));
-    if (x == 0 || x == 1 || x % 2 == 0) {
-        return false;
-    }
-    for (int i = 3; i <= m; i += 2) {
-        if (x % i == 0) {
-            return false;
-        }
-    }
-    return true;
-}
-
-size_t prime_bound(size_t x) {
-    while (!is_prime(x)) {
-        x++;
-    }
-    return x;
-}
-
 template<typename Key, typename Hash=Hasher<Key>, typename Pred=EqualTo<Key>>
 class HashSet {
 public:
     typedef Key key_type;
-    static const size_t MIN_BUCKET_COUNT;
+    static const size_t MIN_BUCKET_COUNT;///< 最少的桶个数，只要集合非空，至少有这么多个桶
     typedef ArrayList<LinkedList<key_type>> container_type;
+
+    bool is_prime(size_t x) {
+        auto m = static_cast<int>(sqrt(x));
+        if (x == 0 || x == 1 || x % 2 == 0) {
+            return false;
+        }
+        for (int i = 3; i <= m; i += 2) {
+            if (x % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /*!
+     *
+     * @param x 给出的下界
+     * @return 大于等于x的最小质数
+     */
+    size_t prime_bound(size_t x) {
+        while (!is_prime(x)) {
+            x++;
+        }
+        return x;
+    }
+
 private:
     container_type m_container;
     float m_maxLoadFactor;
@@ -43,6 +49,9 @@ private:
     Hash m_hasher;
 
 
+    /*!
+     * 判断是否需要重新分配桶的个数
+     */
     void checkReHash() {
         if (bucket_count() == 0 || float(m_size + 1) / bucket_count() > m_maxLoadFactor) {
             size_t next_bucket_count = MIN_BUCKET_COUNT;
@@ -54,6 +63,10 @@ private:
     }
 
 public:
+    /*!
+     *
+     * @return 当前的装载因子
+     */
     float load_factor() {
         return static_cast<float>(m_size) / m_container.size();
     }
@@ -107,6 +120,10 @@ public:
         }
     }
 
+    /*!
+     * 重新分配内存空间，所有元素都会正确的呗插入到新的位置中
+     * @param next_bucket_count 新的桶的个数
+     */
     void rehash(size_t next_bucket_count) {
         if (bucket_count() < next_bucket_count) {
 
@@ -127,6 +144,11 @@ public:
         }
     }
 
+    /*!
+     *
+     * @return 当前对象转换成的arraylist
+     * @attention 顺序并不一定
+     */
     ArrayList<key_type> toArrayList() {
         ArrayList<key_type> result;
         for (auto &list:m_container) {
@@ -137,7 +159,12 @@ public:
         return std::move(result);
     }
 
-    int count(const key_type &x) {
+    /*!
+     * @note 出现次数只可能是0或者1
+     * @param x 待查询的值
+     * @return x在当前表中的出现次数
+     */
+    int count(const key_type &x) const {
         size_t index = m_hasher(x) % bucket_count();
         return m_container[index].count(x);
     }

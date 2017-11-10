@@ -3,8 +3,9 @@
 //
 
 #include "DomNode.h"
+#include "Logger.h"
 
-Pair<String, int> EscapeCharacters[] = {
+const Pair<String, int> EscapeCharacters[] = {
         makePair("amp", 0x26),
         makePair("lt", 0x3c),
         makePair("gt", 0x3e),
@@ -243,12 +244,13 @@ Pair<String, int> EscapeCharacters[] = {
         makePair("clubs", 0x2663),
         makePair("hearts", 0x2665),
         makePair("diams", 0x2666),
-        makePair("middot", 0xb7)
+        makePair("middot", 0xb7),
+        makePair("quot", 0x22)
 };
 
-LinkedList<Pair<String, int>> HtmlEscapeList(EscapeCharacters, EscapeCharacters + 239);
+const LinkedList<Pair<String, int>> HtmlEscapeList(EscapeCharacters, EscapeCharacters + 240);
 
-String SelfClosingTags[] = {
+const String SelfClosingTags[] = {
         "!DOCTYPE",
         "area",
         "base",
@@ -268,24 +270,24 @@ String SelfClosingTags[] = {
         "wbr"
 };
 
-LinkedList<String> SelfClosingList(SelfClosingTags, SelfClosingTags + 17);
+const LinkedList<String> SelfClosingList(SelfClosingTags, SelfClosingTags + 17);
 
 void DomNode::appendChild(DomNode *child) {
     m_children.push_back(child);
 }
 
 int DomNode::getEscapeCode(const String &str) {
-    for (auto &pair:HtmlEscapeList) {
-        if (pair.first == str) {
-            return pair.second;
+    for (auto it = HtmlEscapeList.begin(); it != HtmlEscapeList.end(); ++it) {
+        if (it->first == str) {
+            return it->second;
         }
     }
     return -1;
 }
 
 bool DomNode::isSelfClosed(const String &tagName) {
-    for (auto &str:SelfClosingTags) {
-        if (str == tagName) {
+    for (auto it = SelfClosingList.begin(); it != SelfClosingList.end(); ++it) {
+        if (*it == tagName) {
             return true;
         }
     }
@@ -299,14 +301,22 @@ bool DomNode::isNoEscape(const String &tagName) {
 DomNode::~DomNode() {
     for (auto &child:m_children) {
         delete child;
+        child = nullptr;
     }
 }
 
+/*!
+ * for debug, slow implementation
+ * @return the unescaped html
+ */
 String DomNode::innerHTML() {
+//    if (m_nodeName.length() > 2000) {
+//        Logger::slog("to long nodeName: " + m_nodeName);
+//    }
     if (m_nodeType == Text) {
         return m_nodeName;
     } else if (m_nodeType == Comment) {
-        return "<--" + m_nodeName + "-->";
+        return "<!--" + m_nodeName + "-->";
     } else if (m_nodeType == Document) {
         String res;
         for (auto &child:m_children) {
@@ -315,7 +325,8 @@ String DomNode::innerHTML() {
         return res;
     } else if (m_nodeType == Element) {
         String res;
-        res += "<" + m_nodeName;
+        res += "<";
+        res += m_nodeName;
         if (m_className.length() > 0) {
             res += " class=\"" + m_className + "\"";
         }
@@ -332,8 +343,30 @@ String DomNode::innerHTML() {
             for (auto &child:m_children) {
                 res += child->innerHTML();
             }
-            res += "</" + m_nodeName + ">";
+            res += "</";
+            res += m_nodeName;
+            res += ">";
         }
         return res;
     }
+}
+
+DomNode *DomNode::firstChild() {
+    return *m_children.begin();
+}
+
+void DomNode::retrieveText(String &text) {
+    if (m_nodeType == Text) {
+        text += m_nodeName;
+        return;
+    }
+    for (const auto &child:m_children) {
+        child->retrieveText(text);
+    }
+}
+
+String DomNode::text() {
+    String res;
+    retrieveText(res);
+    return res;
 }

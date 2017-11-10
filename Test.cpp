@@ -114,3 +114,11 @@ void Test::testHtmlParse() {
     delete document;
     HttpRequest::tearDown();
 }
+
+void Test::testFileHtmlParse() {
+    String source = StringConvert::fromFile("src.html");
+    HTMLParser parser;
+    DomNode *document = parser.parseHTML(source);
+    delete document;
+//    StringConvert::toFile(document->innerHTML(), "dest.html");
+}

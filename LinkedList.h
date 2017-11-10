@@ -5,6 +5,10 @@
 #ifndef WHOSEEXCAVATORTECHNOLOGYADVANCED_LINKEDLIST_H
 #define WHOSEEXCAVATORTECHNOLOGYADVANCED_LINKEDLIST_H
 
+/*!
+ * @brief 仿照stl实现了list，带有专门的iterator,采用的循环链表的实现，但并不是一个循环链表而是普通的双向链表
+ */
+
 #include <utility>
 #include "Utility.h"
 
@@ -157,7 +161,7 @@ public:
         return iterator(m_root->pre);
     }
 
-    ~LinkedList() {
+    virtual ~LinkedList() {
         clear();
         delete m_root;
         m_root = nullptr;
@@ -195,6 +199,14 @@ public:
         insert(end(), elem);
     }
 
+    void push_front(const value_type &elem) {
+        insert(begin(), elem);
+    }
+
+    void push_front(value_type &&elem) {
+        insert(begin(), std::move(elem));
+    }
+
     void push_back(value_type &&elem) {
         insert(end(), std::move(elem));
     }
@@ -215,7 +227,7 @@ public:
         return m_size;
     }
 
-    iterator find(const value_type &val) {
+    iterator find(const value_type &val) const {
         for (iterator it = begin(); it != end(); ++it) {
             if (*it == val) {
                 return it;
@@ -224,7 +236,7 @@ public:
         return end();
     }
 
-    int count(const value_type &val) {
+    int count(const value_type &val) const {
         int res = 0;
         for (iterator it = begin(); it != end(); ++it) {
             if (*it == val) {
@@ -232,6 +244,10 @@ public:
             }
         }
         return res;
+    }
+
+    bool empty() const {
+        return m_size == 0;
     }
 
 private:

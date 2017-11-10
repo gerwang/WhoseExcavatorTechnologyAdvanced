@@ -31,15 +31,15 @@ std::string StringConvert::toStdString(String wstr, UINT codePage) {
     return res;
 }
 
-String StringConvert::fromFile(ByteArray fileName) {
+String StringConvert::fromFile(ByteArray fileName, UINT codePage) {
     std::ifstream fin(fileName.c_str());
     std::string str((std::istreambuf_iterator<char>(fin)),
                     std::istreambuf_iterator<char>());
-    return fromStdString(str);
+    return fromStdString(str, codePage);
 }
 
-void StringConvert::toFile(const String &output, ByteArray fileName) {
-    std::string converted(toStdString(output));
+void StringConvert::toFile(const String &output, ByteArray fileName, UINT codePage) {
+    std::string converted(toStdString(output, codePage));
     std::ofstream fout(fileName.c_str());
     fout << converted;
 }

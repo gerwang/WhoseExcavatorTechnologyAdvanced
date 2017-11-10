@@ -63,3 +63,7 @@ void CSVHandler::save(String fileName) {
     }
     StringConvert::toFile(output, fileName);
 }
+
+ArrayList<ArrayList<String>> &CSVHandler::getCSV() {
+    return csv;
+}

@@ -5,6 +5,10 @@
 #ifndef WHOSEEXCAVATORTECHNOLOGYADVANCED_STACK_H
 #define WHOSEEXCAVATORTECHNOLOGYADVANCED_STACK_H
 
+/*!
+ * @brief 默认包裹ArrayList的栈实现，可以获得内部的元素
+ */
+
 #include "ArrayList.h"
 
 template<typename T, typename Container=ArrayList<T> >
