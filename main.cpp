@@ -39,6 +39,7 @@ int main() {
     WordDivider wordDivider;
     wordDivider.loadDict("dictionary.dic");
     wordDivider.loadDict("term.dic");
+    wordDivider.loadStopWords("stopword.dic");
     CSVHandler handler;
     handler.load("input/url.csv");
     auto &csv = handler.getCSV();

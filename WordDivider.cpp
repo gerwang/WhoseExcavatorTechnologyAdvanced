@@ -12,7 +12,7 @@
  * 加载词典
  * @param fileName 词典的文件名（相对路径）
  */
-void WordDivider::loadDict(const ByteArray &fileName) {
+void WordDivider::load(const ByteArray &fileName, HashSet<String> &currentDict) {
     String wordList = StringConvert::fromFile(fileName);
     int index = 0;
     while (index < wordList.length()) {
@@ -22,8 +22,8 @@ void WordDivider::loadDict(const ByteArray &fileName) {
                !iswspace(static_cast<wint_t>(wordList[end_index]))) {
             end_index++;
         }
-        dict.insert(wordList.substr(static_cast<unsigned int>(index),
-                                    static_cast<unsigned int>(end_index)));
+        currentDict.insert(wordList.substr(static_cast<unsigned int>(index),
+                                           static_cast<unsigned int>(end_index)));
         if (max_length < end_index - index) {
             max_length = end_index - index;
         }
@@ -41,14 +41,16 @@ LinkedList<String> WordDivider::divideWords(const String &text) const {
     LinkedList<String> res;
     for (int i = text.length(); i > 0; i--) {
         int len = std::min(max_length, i);
-        bool done = false;
         for (int j = len; j > 0; j--) {
             String sub = text.substr(static_cast<unsigned int>(i - j),
                                      static_cast<unsigned int>(i));
+            if (stopWords.count(sub) > 0) {
+                i -= j - 1;
+                break;
+            }
             if (dict.count(sub) > 0) {
                 res.push_front(sub);
                 i -= j - 1;
-                done = true;
                 break;
             }
         }
@@ -60,4 +62,12 @@ LinkedList<String> WordDivider::divideWords(const String &text) const {
         }*/
     }
     return res;
+}
+
+void WordDivider::loadDict(const ByteArray &fileName) {
+    load(fileName, dict);
+}
+
+void WordDivider::loadStopWords(const ByteArray &fileName) {
+    load(fileName, stopWords);
 }

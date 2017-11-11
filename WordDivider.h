@@ -10,12 +10,17 @@
 
 class WordDivider {
     HashSet<String> dict;
+    HashSet<String> stopWords;
     int max_length;
 public:
 
     WordDivider() : max_length(0) {}
 
+    void load(const ByteArray &fileName, HashSet<String> &currentDict);
+
     void loadDict(const ByteArray &fileName);
+
+    void loadStopWords(const ByteArray &fileName);
 
     LinkedList<String> divideWords(const String &text) const;
 };
