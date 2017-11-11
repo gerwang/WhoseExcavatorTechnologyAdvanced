@@ -119,9 +119,6 @@ public:
     }
 
     void clear() {
-        for (size_type i = 0; i < m_cap; i++) {
-            m_begin[i].~T();
-        }
         delete[] m_begin;
         m_begin = nullptr;
         m_size = m_cap = 0;

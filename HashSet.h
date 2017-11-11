@@ -81,6 +81,8 @@ public:
 
     explicit HashSet(const Hash &hasher = Hash()) : m_hasher(hasher), m_maxLoadFactor(1), m_size(0) {}
 
+    virtual ~HashSet() = default;
+
     int size() const {
         return m_size;
     }

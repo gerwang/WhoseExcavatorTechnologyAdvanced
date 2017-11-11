@@ -34,8 +34,7 @@ void work(const String &url, ArrayList<String> &result, const WordDivider &divid
     }
 }
 
-int main() {
-    HttpRequest::startUp();
+void solve() {
     WordDivider wordDivider;
     wordDivider.loadDict("dictionary.dic");
     wordDivider.loadDict("term.dic");
@@ -64,6 +63,11 @@ int main() {
         std::cout << "Complete " << row << std::endl;
     }
     output.save("input/result.csv");
+}
+
+int main() {
+    HttpRequest::startUp();
+    solve();
     HttpRequest::tearDown();
     return 0;
 }
