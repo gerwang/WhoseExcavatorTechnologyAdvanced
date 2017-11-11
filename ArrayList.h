@@ -21,6 +21,7 @@ public:
     typedef std::size_t size_type;
     typedef ArrayList<T> instance_type;
     static const size_type MIN_SIZE;
+    static int newCounter;
 private:
     /*!
      * @param m_begin the address where vector begins
@@ -36,11 +37,15 @@ private:
      */
     void reallocate(size_type next_cap) {
         iterator next_begin = new value_type[next_cap];
+        newCounter += next_cap;
         for (size_type i = 0; i < m_size; i++) {
             next_begin[i] = std::move(m_begin[i]);
         }
-        m_cap = next_cap;
+
+        newCounter -= m_cap;
         delete[] m_begin;
+
+        m_cap = next_cap;
         m_begin = next_begin;
     }
 
@@ -82,6 +87,7 @@ public:
      * @return 当前对象
      */
     ArrayList &operator=(instance_type &&other) noexcept {
+        clear();///<@attention important!
         m_begin = other.m_begin;
         other.m_begin = nullptr;
 
@@ -119,7 +125,10 @@ public:
     }
 
     void clear() {
+
+        newCounter -= m_cap;
         delete[] m_begin;
+
         m_begin = nullptr;
         m_size = m_cap = 0;
     }
@@ -146,6 +155,7 @@ public:
             m_cap++;
         }
         m_begin = new value_type[m_cap];
+        newCounter += m_cap;
         for (size_type i = 0; i < m_cap; i++) {
             m_begin[i] = first[i];
         }
@@ -311,6 +321,9 @@ public:
 
 template<typename T>
 const typename ArrayList<T>::size_type ArrayList<T>::MIN_SIZE = 24;
+
+template<typename T>
+int ArrayList<T>::newCounter = 0;
 
 template<typename CharT, typename T>
 std::basic_ostream<CharT> &operator<<(std::basic_ostream<CharT> &out, const ArrayList<T> &vector) {

@@ -16,6 +16,8 @@ public:
 
     WordDivider() : max_length(0) {}
 
+    virtual ~WordDivider() = default;
+
     void load(const ByteArray &fileName, HashSet<String> &currentDict);
 
     void loadDict(const ByteArray &fileName);

@@ -14,7 +14,9 @@ void Logger::log(const String &str) {
 }
 
 void Logger::slog(const String &str) {
+#ifdef DEBUG
     logger()->log(str);
+#endif
 }
 
 Logger *Logger::s_instance;
