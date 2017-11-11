@@ -40,28 +40,29 @@ int main() {
     wordDivider.loadDict("dictionary.dic");
     wordDivider.loadDict("term.dic");
     CSVHandler handler;
-    handler.load("url.csv");
+    handler.load("input/url.csv");
     auto &csv = handler.getCSV();
     CSVHandler output;
-    output.getCSV().resize(1);
-    output.getCSV()[0].push_back(L"序号");
-    output.getCSV()[0].push_back(L"网址");
-    output.getCSV()[0].push_back(L"发帖大类");
-    output.getCSV()[0].push_back(L"发帖小类");
-    output.getCSV()[0].push_back(L"发帖标题");
-    output.getCSV()[0].push_back(L"发帖内容");
-    output.getCSV()[0].push_back(L"发帖人");
-    output.getCSV()[0].push_back(L"发帖日期");
-    output.getCSV()[0].push_back(L"发帖类型");
-    output.getCSV()[0].push_back(L"分词结果");
+    auto &csvout = output.getCSV();
+    csvout.resize(1);
+    csvout[0].push_back(L"序号");
+    csvout[0].push_back(L"网址");
+    csvout[0].push_back(L"发帖大类");
+    csvout[0].push_back(L"发帖小类");
+    csvout[0].push_back(L"发帖标题");
+    csvout[0].push_back(L"发帖内容");
+    csvout[0].push_back(L"发帖人");
+    csvout[0].push_back(L"发帖日期");
+    csvout[0].push_back(L"发帖类型");
+    csvout[0].push_back(L"分词结果");
     for (int row = 1; row < csv.size(); row++) {
         const String &url = csv[row][1];
         ArrayList<String> holder;
         work(url, holder, wordDivider, row);
-        output.getCSV().push_back(std::move(holder));
+        csvout.push_back(std::move(holder));
         std::cout << "Complete " << row << std::endl;
     }
-    output.save("result.csv");
+    output.save("input/result.csv");
     HttpRequest::tearDown();
     return 0;
 }
