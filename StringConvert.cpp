@@ -3,6 +3,7 @@
 //
 
 #include "StringConvert.h"
+#include "Logger.h"
 #include <locale>
 #include <fstream>
 #include <cstring>
@@ -33,6 +34,9 @@ std::string StringConvert::toStdString(String wstr, UINT codePage) {
 
 String StringConvert::fromFile(ByteArray fileName, UINT codePage) {
     std::ifstream fin(fileName.c_str());
+    if (!fin) {
+        Logger::slog("cannot open file " + fileName);
+    }
     std::string str((std::istreambuf_iterator<char>(fin)),
                     std::istreambuf_iterator<char>());
     return fromStdString(str, codePage);

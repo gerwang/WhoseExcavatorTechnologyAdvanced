@@ -148,16 +148,16 @@ public:
     template<typename InputIterator>
     void assign(InputIterator first, InputIterator last) {
         clear();
-        InputIterator temp = first;
         m_cap = 0;
-        while (temp != last) {
-            temp++;
+        while (first + m_cap != last) {
             m_cap++;
         }
-        m_begin = new value_type[m_cap];
-        newCounter += m_cap;
-        for (size_type i = 0; i < m_cap; i++) {
-            m_begin[i] = first[i];
+        if (m_cap != 0) {
+            m_begin = new value_type[m_cap];
+            newCounter += m_cap;
+            for (size_type i = 0; i < m_cap; i++) {
+                m_begin[i] = first[i];
+            }
         }
         m_size = m_cap;
     }

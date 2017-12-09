@@ -34,7 +34,7 @@ public:
         for (size_type i = startIndex; i < endIndex; i++) {
             res.push_back(this->operator[](i));
         }
-        return std::move(res);
+        return res;
     }
 
     BasicString() {}

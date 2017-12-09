@@ -6,6 +6,7 @@
 #include "HttpRequest.h"
 #include "StringConvert.h"
 #include "Logger.h"
+#include "HTMLParser.h"
 #include <cstring>
 
 
@@ -107,23 +108,38 @@ String HttpRequest::get(const String &url) {
         buffer[bytesReceived] = '\0';
         response += buffer;
     }
-    String converted = StringConvert::fromStdString(response);
+
+    if (closesocket(sock) != 0) {
+        Logger::slog("close socket failed!");
+    }
+
     int index = 0;
-    while (index < converted.size() && !converted.match("\r\n\r\n", static_cast<size_t>(index))) {
+    while (index < response.size() && response.substr(static_cast<unsigned int>(index), 4) != "\r\n\r\n") {
         index++;
     }
     index += 4;
-
-    //handle chunk
-    while (index < converted.size() && converted[index] != '<') {
-        index++;
+    std::string result;
+    while (index < response.size()) {
+        int cnt = 0;
+        while (index < response.size() && iswalnum(static_cast<wint_t>(response[index]))) {
+            if (iswdigit(static_cast<wint_t>(response[index]))) {
+                cnt = cnt * 16 + response[index] - '0';
+            } else {
+                cnt = cnt * 16 + 10 + response[index] - 'a';
+            }
+            index++;
+        }
+        if (cnt == 0) {
+            break;
+        }
+        index += 2;//CRLF
+        if (index < response.size()) {
+            result += response.substr(static_cast<unsigned int>(index), static_cast<unsigned int>(cnt));
+        }
+        index += cnt;
+        index += 2;
     }
-    int end_index = converted.size();
-    while (index < end_index && converted[end_index - 1] != '>') {
-        end_index--;
-    }
-
-    return converted.substr(static_cast<unsigned int>(index), static_cast<unsigned int>(end_index));
+    return StringConvert::fromStdString(result);
 }
 
 void HttpRequest::startUp() {
