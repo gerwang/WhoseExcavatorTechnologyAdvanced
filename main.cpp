@@ -25,7 +25,7 @@ void work(const String &url, ArrayList<String> &result, const WordDivider &divid
     result.clear();
     result.push_back(String::number(index));
     result.push_back(url);
-    result += Crawler().crawl(url);
+    result += Crawler().crawl(url, index);
     if (result.size() == 9) {
         auto titleWords = divider.divideWords(result[4]);
         auto contentWords = divider.divideWords(result[5]);
@@ -80,7 +80,7 @@ void solve() {
     */
     ///<@note 为了多线程，一定要先开好
     {
-        ThreadPool pool;
+        ThreadPool pool(50);
         for (int row = 1; row < csv.size(); row++) {
             const String &url = csv[row][1];
             ArrayList<String> &backPtr = csvout[row];

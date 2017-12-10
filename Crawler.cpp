@@ -7,10 +7,19 @@
 #include "HTMLParser.h"
 #include "cQuery.h"
 #include "Logger.h"
+#include "StringConvert.h"
 
-ArrayList<String> Crawler::crawl(const String &url) {
+ArrayList<String> Crawler::crawl(const String &url, int fileIndex) {
     HttpRequest request;
-    String html = request.get(url);
+    ByteArray fileName = "input/" + String::number(fileIndex) + ".html";
+    std::ifstream htmlFile(StringConvert::toStdString(fileName));
+    String html;
+    if (!htmlFile) {
+        html = request.get(url);
+        StringConvert::toFile(html, fileName);
+    } else {
+        html = StringConvert::fromFile(fileName);
+    }
     HTMLParser parser;
     std::shared_ptr<DomNode> document(parser.parseHTML(html));
     ArrayList<String> result;

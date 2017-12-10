@@ -119,6 +119,7 @@ String HttpRequest::get(const String &url) {
     }
     index += 4;
     std::string result;
+    bool complete = false;
     while (index < response.size()) {
         int cnt = 0;
         while (index < response.size() && iswalnum(static_cast<wint_t>(response[index]))) {
@@ -130,6 +131,7 @@ String HttpRequest::get(const String &url) {
             index++;
         }
         if (cnt == 0) {
+            complete = true;
             break;
         }
         index += 2;//CRLF
@@ -138,6 +140,9 @@ String HttpRequest::get(const String &url) {
         }
         index += cnt;
         index += 2;
+    }
+    if (!complete) {
+        Logger::slog(url + "is incomplete!");
     }
     return StringConvert::fromStdString(result);
 }

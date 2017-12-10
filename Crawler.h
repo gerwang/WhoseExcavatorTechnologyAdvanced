@@ -16,7 +16,7 @@ public:
      * @param url  网址
      * @return 需要的信息
      */
-    ArrayList<String> crawl(const String &url);
+    ArrayList<String> crawl(const String &url, int fileIndex);
 };
 
 
