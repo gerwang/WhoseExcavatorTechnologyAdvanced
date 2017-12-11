@@ -21,7 +21,9 @@ private:
     std::ofstream m_log;
     static Logger *s_instance;
 
-    explicit Logger(ByteArray logFileName = "debug.log") : m_logFileName(std::move(logFileName)) {}
+    explicit Logger(ByteArray logFileName = "debug.log") : m_logFileName(std::move(logFileName)) {
+        std::ifstream(m_logFileName.c_str());
+    }
 
 public:
     /*!

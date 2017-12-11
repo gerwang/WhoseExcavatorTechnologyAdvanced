@@ -45,5 +45,8 @@ String StringConvert::fromFile(ByteArray fileName, UINT codePage) {
 void StringConvert::toFile(const String &output, ByteArray fileName, UINT codePage) {
     std::string converted(toStdString(output, codePage));
     std::ofstream fout(fileName.c_str());
+    if (!fout) {
+        Logger::slog("cannot open output file " + fileName);
+    }
     fout << converted;
 }

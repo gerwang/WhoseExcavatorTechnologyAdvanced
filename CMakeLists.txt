@@ -9,7 +9,7 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_FLAGS -O4)
 set(CMAKE_EXE_LINKER_FLAGS -static)
 
-set(SOURCE_FILES main.cpp ArrayList.h Test.cpp Test.h BasicString.h Stack.h LinkedList.h HashSet.h Utility.h CSVHandler.cpp CSVHandler.h StringConvert.cpp StringConvert.h Logger.cpp Logger.h HttpRequest.cpp HttpRequest.h HTMLParser.cpp HTMLParser.h DomNode.cpp DomNode.h cQuery.cpp cQuery.h Crawler.cpp Crawler.h WordDivider.cpp WordDivider.h ThreadPool.cpp ThreadPool.h)
+set(SOURCE_FILES main.cpp ArrayList.h Test.cpp Test.h BasicString.h Stack.h LinkedList.h HashSet.h Utility.h CSVHandler.cpp CSVHandler.h StringConvert.cpp StringConvert.h Logger.cpp Logger.h HttpRequest.cpp HttpRequest.h HTMLParser.cpp HTMLParser.h DomNode.cpp DomNode.h cQuery.cpp cQuery.h Crawler.cpp Crawler.h WordDivider.cpp WordDivider.h ThreadPool.cpp ThreadPool.h AvlMap.h Solver.cpp Solver.h export.cpp)
 add_executable(WhoseExcavatorTechnologyAdvanced ${SOURCE_FILES})
 
 if (WIN32)

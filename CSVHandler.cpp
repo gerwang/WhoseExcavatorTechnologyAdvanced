@@ -18,6 +18,7 @@ String stripQuote(const String &str, int start, int end) {
 }
 
 void CSVHandler::load(const ByteArray &fileName) {
+    csv.clear();
     String input = StringConvert::fromFile(fileName);
     int index = 0;
     int row = 0;

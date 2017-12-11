@@ -44,12 +44,12 @@ LinkedList<String> WordDivider::divideWords(const String &text) const {
         for (int j = len; j > 0; j--) {
             String sub = text.substr(static_cast<unsigned int>(i - j),
                                      static_cast<unsigned int>(i));
-            if (stopWords.count(sub) > 0) {
+            if (dict.count(sub) > 0) {
+                res.push_front(sub);
                 i -= j - 1;
                 break;
             }
-            if (dict.count(sub) > 0) {
-                res.push_front(sub);
+            if (stopWords.count(sub) > 0) {
                 i -= j - 1;
                 break;
             }
