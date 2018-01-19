@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\CMakeFiles\d788ca43b5542f446f24ae241961f779\generate.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{1F875E84-2A23-3318-886A-1A3929E0EF70}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

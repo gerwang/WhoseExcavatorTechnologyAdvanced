@@ -37,23 +37,29 @@ class Solver {
 
     AvlMap<String, DocCounter> treeMap;
 
+    WordDivider wordDivider;
+
 /*!
  * 使用给定的分词器处理数据
  * @param url 网址
  * @param result 存放结果的向量
- * @param divider 分词器
+ * @param wordDivider 分词器
  * @param urlID 序号
  */
-    void work(const String &url, ArrayList<String> &result, const WordDivider &divider, int urlID);
+    void work(const String &url, ArrayList<String> &result, int urlID);
 
 public:
     void loadPages();
 
-    ArrayList<DocNode> searchQuery(const std::string &inpueLine);
+    ArrayList<DocNode> searchQuery(const String& queryLine);
 
     void solveConsole();
 
     void outputDebug();
+
+    CSVHandler &getOutput();
+
+    LinkedList<String> divideLine(String line);
 };
 
 

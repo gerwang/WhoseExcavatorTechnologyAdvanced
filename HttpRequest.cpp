@@ -11,7 +11,7 @@
 
 
 #ifdef _MSC_VER //msvc compiler
-#pragma comment("Ws2_32.lib")
+#pragma comment(lib, "Ws2_32.lib")
 #endif
 
 int parseHttp(const String &url, int index) {

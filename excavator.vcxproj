@@ -1,0 +1,362 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGUID>{0042AC4F-4D0A-347B-BE31-81001E598A6F}</ProjectGUID>
+    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>x64</Platform>
+    <ProjectName>excavator</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">excavator.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">excavator</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">excavator.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">excavator</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\MinSizeRel\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">excavator.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">excavator</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\RelWithDebInfo\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">excavator.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">excavator</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</GenerateManifest>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalOptions>%(AdditionalOptions)  /utf-8</AdditionalOptions>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>Debug/</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PreprocessorDefinitions>CMAKE_INTDIR="Debug";excavator_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_DEBUG;CMAKE_INTDIR=\"Debug\";excavator_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalOptions>%(AdditionalOptions)  /machine:x64</AdditionalOptions>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;ws2_32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>Debug</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>D:/Gerwa/CLionProjects/WhoseExcavatorTechnologyAdvanced/Debug/excavator.lib</ImportLibrary>
+      <ProgramDataBaseFile>D:/Gerwa/CLionProjects/WhoseExcavatorTechnologyAdvanced/Debug/excavator.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+      <Version>
+      </Version>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalOptions>%(AdditionalOptions)  /utf-8</AdditionalOptions>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>Release/</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <PreprocessorDefinitions>NDEBUG;CMAKE_INTDIR="Release";excavator_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;NDEBUG;CMAKE_INTDIR=\"Release\";excavator_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalOptions>%(AdditionalOptions)  /machine:x64</AdditionalOptions>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;ws2_32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>No</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>D:/Gerwa/CLionProjects/WhoseExcavatorTechnologyAdvanced/Release/excavator.lib</ImportLibrary>
+      <ProgramDataBaseFile>D:/Gerwa/CLionProjects/WhoseExcavatorTechnologyAdvanced/Release/excavator.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+      <Version>
+      </Version>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <ClCompile>
+      <AdditionalOptions>%(AdditionalOptions)  /utf-8</AdditionalOptions>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>MinSizeRel/</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PreprocessorDefinitions>NDEBUG;CMAKE_INTDIR="MinSizeRel";excavator_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;NDEBUG;CMAKE_INTDIR=\"MinSizeRel\";excavator_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalOptions>%(AdditionalOptions)  /machine:x64</AdditionalOptions>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;ws2_32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>No</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>D:/Gerwa/CLionProjects/WhoseExcavatorTechnologyAdvanced/MinSizeRel/excavator.lib</ImportLibrary>
+      <ProgramDataBaseFile>D:/Gerwa/CLionProjects/WhoseExcavatorTechnologyAdvanced/MinSizeRel/excavator.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+      <Version>
+      </Version>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <ClCompile>
+      <AdditionalOptions>%(AdditionalOptions)  /utf-8</AdditionalOptions>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>RelWithDebInfo/</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PreprocessorDefinitions>NDEBUG;CMAKE_INTDIR="RelWithDebInfo";excavator_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;NDEBUG;CMAKE_INTDIR=\"RelWithDebInfo\";excavator_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalOptions>%(AdditionalOptions)  /machine:x64</AdditionalOptions>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;ws2_32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>Debug</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>D:/Gerwa/CLionProjects/WhoseExcavatorTechnologyAdvanced/RelWithDebInfo/excavator.lib</ImportLibrary>
+      <ProgramDataBaseFile>D:/Gerwa/CLionProjects/WhoseExcavatorTechnologyAdvanced/RelWithDebInfo/excavator.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+      <Version>
+      </Version>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\CMakeLists.txt">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule D:/Gerwa/CLionProjects/WhoseExcavatorTechnologyAdvanced/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"D:\Program Files\JetBrains\CLion 2017.2.1\bin\cmake\bin\cmake.exe" -HD:/Gerwa/CLionProjects/WhoseExcavatorTechnologyAdvanced -BD:/Gerwa/CLionProjects/WhoseExcavatorTechnologyAdvanced --check-stamp-file D:/Gerwa/CLionProjects/WhoseExcavatorTechnologyAdvanced/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:/Gerwa/CLionProjects/WhoseExcavatorTechnologyAdvanced/CMakeLists.txt;D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\CMakeLists.txt;D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\CMakeFiles\3.8.2\CMakeSystem.cmake;D:\Program Files\JetBrains\CLion 2017.2.1\bin\cmake\share\cmake-3.8\Modules\CMakeSystemSpecificInitialize.cmake;D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\CMakeFiles\3.8.2\CMakeCCompiler.cmake;D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\CMakeFiles\3.8.2\CMakeCXXCompiler.cmake;D:\Program Files\JetBrains\CLion 2017.2.1\bin\cmake\share\cmake-3.8\Modules\CMakeSystemSpecificInformation.cmake;D:\Program Files\JetBrains\CLion 2017.2.1\bin\cmake\share\cmake-3.8\Modules\CMakeGenericSystem.cmake;D:\Program Files\JetBrains\CLion 2017.2.1\bin\cmake\share\cmake-3.8\Modules\Platform\Windows.cmake;D:\Program Files\JetBrains\CLion 2017.2.1\bin\cmake\share\cmake-3.8\Modules\Platform\WindowsPaths.cmake;D:\Program Files\JetBrains\CLion 2017.2.1\bin\cmake\share\cmake-3.8\Modules\CMakeCInformation.cmake;D:\Program Files\JetBrains\CLion 2017.2.1\bin\cmake\share\cmake-3.8\Modules\CMakeLanguageInformation.cmake;D:\Program Files\JetBrains\CLion 2017.2.1\bin\cmake\share\cmake-3.8\Modules\Platform\Windows-MSVC-C.cmake;D:\Program Files\JetBrains\CLion 2017.2.1\bin\cmake\share\cmake-3.8\Modules\Platform\Windows-MSVC.cmake;D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\CMakeFiles\3.8.2\CMakeRCCompiler.cmake;D:\Program Files\JetBrains\CLion 2017.2.1\bin\cmake\share\cmake-3.8\Modules\CMakeRCInformation.cmake;D:\Program Files\JetBrains\CLion 2017.2.1\bin\cmake\share\cmake-3.8\Modules\CMakeCommonLanguageInclude.cmake;D:\Program Files\JetBrains\CLion 2017.2.1\bin\cmake\share\cmake-3.8\Modules\CMakeCXXInformation.cmake;D:\Program Files\JetBrains\CLion 2017.2.1\bin\cmake\share\cmake-3.8\Modules\CMakeLanguageInformation.cmake;D:\Program Files\JetBrains\CLion 2017.2.1\bin\cmake\share\cmake-3.8\Modules\Compiler\MSVC-CXX.cmake;D:\Program Files\JetBrains\CLion 2017.2.1\bin\cmake\share\cmake-3.8\Modules\Platform\Windows-MSVC-CXX.cmake;D:\Program Files\JetBrains\CLion 2017.2.1\bin\cmake\share\cmake-3.8\Modules\Platform\Windows-MSVC.cmake;D:\Program Files\JetBrains\CLion 2017.2.1\bin\cmake\share\cmake-3.8\Modules\CMakeCommonLanguageInclude.cmake;D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule D:/Gerwa/CLionProjects/WhoseExcavatorTechnologyAdvanced/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"D:\Program Files\JetBrains\CLion 2017.2.1\bin\cmake\bin\cmake.exe" -HD:/Gerwa/CLionProjects/WhoseExcavatorTechnologyAdvanced -BD:/Gerwa/CLionProjects/WhoseExcavatorTechnologyAdvanced --check-stamp-file D:/Gerwa/CLionProjects/WhoseExcavatorTechnologyAdvanced/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:/Gerwa/CLionProjects/WhoseExcavatorTechnologyAdvanced/CMakeLists.txt;D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\CMakeLists.txt;D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\CMakeFiles\3.8.2\CMakeSystem.cmake;D:\Program Files\JetBrains\CLion 2017.2.1\bin\cmake\share\cmake-3.8\Modules\CMakeSystemSpecificInitialize.cmake;D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\CMakeFiles\3.8.2\CMakeCCompiler.cmake;D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\CMakeFiles\3.8.2\CMakeCXXCompiler.cmake;D:\Program Files\JetBrains\CLion 2017.2.1\bin\cmake\share\cmake-3.8\Modules\CMakeSystemSpecificInformation.cmake;D:\Program Files\JetBrains\CLion 2017.2.1\bin\cmake\share\cmake-3.8\Modules\CMakeGenericSystem.cmake;D:\Program Files\JetBrains\CLion 2017.2.1\bin\cmake\share\cmake-3.8\Modules\Platform\Windows.cmake;D:\Program Files\JetBrains\CLion 2017.2.1\bin\cmake\share\cmake-3.8\Modules\Platform\WindowsPaths.cmake;D:\Program Files\JetBrains\CLion 2017.2.1\bin\cmake\share\cmake-3.8\Modules\CMakeCInformation.cmake;D:\Program Files\JetBrains\CLion 2017.2.1\bin\cmake\share\cmake-3.8\Modules\CMakeLanguageInformation.cmake;D:\Program Files\JetBrains\CLion 2017.2.1\bin\cmake\share\cmake-3.8\Modules\Platform\Windows-MSVC-C.cmake;D:\Program Files\JetBrains\CLion 2017.2.1\bin\cmake\share\cmake-3.8\Modules\Platform\Windows-MSVC.cmake;D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\CMakeFiles\3.8.2\CMakeRCCompiler.cmake;D:\Program Files\JetBrains\CLion 2017.2.1\bin\cmake\share\cmake-3.8\Modules\CMakeRCInformation.cmake;D:\Program Files\JetBrains\CLion 2017.2.1\bin\cmake\share\cmake-3.8\Modules\CMakeCommonLanguageInclude.cmake;D:\Program Files\JetBrains\CLion 2017.2.1\bin\cmake\share\cmake-3.8\Modules\CMakeCXXInformation.cmake;D:\Program Files\JetBrains\CLion 2017.2.1\bin\cmake\share\cmake-3.8\Modules\CMakeLanguageInformation.cmake;D:\Program Files\JetBrains\CLion 2017.2.1\bin\cmake\share\cmake-3.8\Modules\Compiler\MSVC-CXX.cmake;D:\Program Files\JetBrains\CLion 2017.2.1\bin\cmake\share\cmake-3.8\Modules\Platform\Windows-MSVC-CXX.cmake;D:\Program Files\JetBrains\CLion 2017.2.1\bin\cmake\share\cmake-3.8\Modules\Platform\Windows-MSVC.cmake;D:\Program Files\JetBrains\CLion 2017.2.1\bin\cmake\share\cmake-3.8\Modules\CMakeCommonLanguageInclude.cmake;D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule D:/Gerwa/CLionProjects/WhoseExcavatorTechnologyAdvanced/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+"D:\Program Files\JetBrains\CLion 2017.2.1\bin\cmake\bin\cmake.exe" -HD:/Gerwa/CLionProjects/WhoseExcavatorTechnologyAdvanced -BD:/Gerwa/CLionProjects/WhoseExcavatorTechnologyAdvanced --check-stamp-file D:/Gerwa/CLionProjects/WhoseExcavatorTechnologyAdvanced/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:/Gerwa/CLionProjects/WhoseExcavatorTechnologyAdvanced/CMakeLists.txt;D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\CMakeLists.txt;D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\CMakeFiles\3.8.2\CMakeSystem.cmake;D:\Program Files\JetBrains\CLion 2017.2.1\bin\cmake\share\cmake-3.8\Modules\CMakeSystemSpecificInitialize.cmake;D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\CMakeFiles\3.8.2\CMakeCCompiler.cmake;D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\CMakeFiles\3.8.2\CMakeCXXCompiler.cmake;D:\Program Files\JetBrains\CLion 2017.2.1\bin\cmake\share\cmake-3.8\Modules\CMakeSystemSpecificInformation.cmake;D:\Program Files\JetBrains\CLion 2017.2.1\bin\cmake\share\cmake-3.8\Modules\CMakeGenericSystem.cmake;D:\Program Files\JetBrains\CLion 2017.2.1\bin\cmake\share\cmake-3.8\Modules\Platform\Windows.cmake;D:\Program Files\JetBrains\CLion 2017.2.1\bin\cmake\share\cmake-3.8\Modules\Platform\WindowsPaths.cmake;D:\Program Files\JetBrains\CLion 2017.2.1\bin\cmake\share\cmake-3.8\Modules\CMakeCInformation.cmake;D:\Program Files\JetBrains\CLion 2017.2.1\bin\cmake\share\cmake-3.8\Modules\CMakeLanguageInformation.cmake;D:\Program Files\JetBrains\CLion 2017.2.1\bin\cmake\share\cmake-3.8\Modules\Platform\Windows-MSVC-C.cmake;D:\Program Files\JetBrains\CLion 2017.2.1\bin\cmake\share\cmake-3.8\Modules\Platform\Windows-MSVC.cmake;D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\CMakeFiles\3.8.2\CMakeRCCompiler.cmake;D:\Program Files\JetBrains\CLion 2017.2.1\bin\cmake\share\cmake-3.8\Modules\CMakeRCInformation.cmake;D:\Program Files\JetBrains\CLion 2017.2.1\bin\cmake\share\cmake-3.8\Modules\CMakeCommonLanguageInclude.cmake;D:\Program Files\JetBrains\CLion 2017.2.1\bin\cmake\share\cmake-3.8\Modules\CMakeCXXInformation.cmake;D:\Program Files\JetBrains\CLion 2017.2.1\bin\cmake\share\cmake-3.8\Modules\CMakeLanguageInformation.cmake;D:\Program Files\JetBrains\CLion 2017.2.1\bin\cmake\share\cmake-3.8\Modules\Compiler\MSVC-CXX.cmake;D:\Program Files\JetBrains\CLion 2017.2.1\bin\cmake\share\cmake-3.8\Modules\Platform\Windows-MSVC-CXX.cmake;D:\Program Files\JetBrains\CLion 2017.2.1\bin\cmake\share\cmake-3.8\Modules\Platform\Windows-MSVC.cmake;D:\Program Files\JetBrains\CLion 2017.2.1\bin\cmake\share\cmake-3.8\Modules\CMakeCommonLanguageInclude.cmake;D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule D:/Gerwa/CLionProjects/WhoseExcavatorTechnologyAdvanced/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+"D:\Program Files\JetBrains\CLion 2017.2.1\bin\cmake\bin\cmake.exe" -HD:/Gerwa/CLionProjects/WhoseExcavatorTechnologyAdvanced -BD:/Gerwa/CLionProjects/WhoseExcavatorTechnologyAdvanced --check-stamp-file D:/Gerwa/CLionProjects/WhoseExcavatorTechnologyAdvanced/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:/Gerwa/CLionProjects/WhoseExcavatorTechnologyAdvanced/CMakeLists.txt;D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\CMakeLists.txt;D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\CMakeFiles\3.8.2\CMakeSystem.cmake;D:\Program Files\JetBrains\CLion 2017.2.1\bin\cmake\share\cmake-3.8\Modules\CMakeSystemSpecificInitialize.cmake;D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\CMakeFiles\3.8.2\CMakeCCompiler.cmake;D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\CMakeFiles\3.8.2\CMakeCXXCompiler.cmake;D:\Program Files\JetBrains\CLion 2017.2.1\bin\cmake\share\cmake-3.8\Modules\CMakeSystemSpecificInformation.cmake;D:\Program Files\JetBrains\CLion 2017.2.1\bin\cmake\share\cmake-3.8\Modules\CMakeGenericSystem.cmake;D:\Program Files\JetBrains\CLion 2017.2.1\bin\cmake\share\cmake-3.8\Modules\Platform\Windows.cmake;D:\Program Files\JetBrains\CLion 2017.2.1\bin\cmake\share\cmake-3.8\Modules\Platform\WindowsPaths.cmake;D:\Program Files\JetBrains\CLion 2017.2.1\bin\cmake\share\cmake-3.8\Modules\CMakeCInformation.cmake;D:\Program Files\JetBrains\CLion 2017.2.1\bin\cmake\share\cmake-3.8\Modules\CMakeLanguageInformation.cmake;D:\Program Files\JetBrains\CLion 2017.2.1\bin\cmake\share\cmake-3.8\Modules\Platform\Windows-MSVC-C.cmake;D:\Program Files\JetBrains\CLion 2017.2.1\bin\cmake\share\cmake-3.8\Modules\Platform\Windows-MSVC.cmake;D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\CMakeFiles\3.8.2\CMakeRCCompiler.cmake;D:\Program Files\JetBrains\CLion 2017.2.1\bin\cmake\share\cmake-3.8\Modules\CMakeRCInformation.cmake;D:\Program Files\JetBrains\CLion 2017.2.1\bin\cmake\share\cmake-3.8\Modules\CMakeCommonLanguageInclude.cmake;D:\Program Files\JetBrains\CLion 2017.2.1\bin\cmake\share\cmake-3.8\Modules\CMakeCXXInformation.cmake;D:\Program Files\JetBrains\CLion 2017.2.1\bin\cmake\share\cmake-3.8\Modules\CMakeLanguageInformation.cmake;D:\Program Files\JetBrains\CLion 2017.2.1\bin\cmake\share\cmake-3.8\Modules\Compiler\MSVC-CXX.cmake;D:\Program Files\JetBrains\CLion 2017.2.1\bin\cmake\share\cmake-3.8\Modules\Platform\Windows-MSVC-CXX.cmake;D:\Program Files\JetBrains\CLion 2017.2.1\bin\cmake\share\cmake-3.8\Modules\Platform\Windows-MSVC.cmake;D:\Program Files\JetBrains\CLion 2017.2.1\bin\cmake\share\cmake-3.8\Modules\CMakeCommonLanguageInclude.cmake;D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\ArrayList.h" />
+    <ClInclude Include="D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\Test.h" />
+    <ClInclude Include="D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\BasicString.h" />
+    <ClInclude Include="D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\Stack.h" />
+    <ClInclude Include="D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\LinkedList.h" />
+    <ClInclude Include="D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\HashSet.h" />
+    <ClInclude Include="D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\Utility.h" />
+    <ClInclude Include="D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\CSVHandler.h" />
+    <ClInclude Include="D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\StringConvert.h" />
+    <ClInclude Include="D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\Logger.h" />
+    <ClInclude Include="D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\HttpRequest.h" />
+    <ClInclude Include="D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\HTMLParser.h" />
+    <ClInclude Include="D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\DomNode.h" />
+    <ClInclude Include="D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\cQuery.h" />
+    <ClInclude Include="D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\Crawler.h" />
+    <ClInclude Include="D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\WordDivider.h" />
+    <ClInclude Include="D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\ThreadPool.h" />
+    <ClInclude Include="D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\AvlMap.h" />
+    <ClInclude Include="D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\Solver.h" />
+    <ClCompile Include="D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\export.cpp" />
+    <ClCompile Include="D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\Test.cpp" />
+    <ClCompile Include="D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\CSVHandler.cpp" />
+    <ClCompile Include="D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\StringConvert.cpp" />
+    <ClCompile Include="D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\Logger.cpp" />
+    <ClCompile Include="D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\HttpRequest.cpp" />
+    <ClCompile Include="D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\HTMLParser.cpp" />
+    <ClCompile Include="D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\DomNode.cpp" />
+    <ClCompile Include="D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\cQuery.cpp" />
+    <ClCompile Include="D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\Crawler.cpp" />
+    <ClCompile Include="D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\WordDivider.cpp" />
+    <ClCompile Include="D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\ThreadPool.cpp" />
+    <ClCompile Include="D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\Solver.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\ZERO_CHECK.vcxproj">
+      <Project>{FA16CC23-12D3-3826-9519-CB00089DA499}</Project>
+      <Name>ZERO_CHECK</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

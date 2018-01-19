@@ -293,6 +293,7 @@ std::basic_ostream<CharT> &operator<<(std::basic_ostream<CharT> &out, const Link
         out << x << CharT(',') << CharT(' ');
     }
     out << CharT(']');
+	return out;
 };
 
 #endif //WHOSEEXCAVATORTECHNOLOGYADVANCED_LINKEDLIST_H

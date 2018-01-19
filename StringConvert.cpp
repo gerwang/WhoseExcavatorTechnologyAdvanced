@@ -36,6 +36,7 @@ String StringConvert::fromFile(ByteArray fileName, UINT codePage) {
     std::ifstream fin(fileName.c_str());
     if (!fin) {
         Logger::slog("cannot open file " + fileName);
+        return String();
     }
     std::string str((std::istreambuf_iterator<char>(fin)),
                     std::istreambuf_iterator<char>());
@@ -47,6 +48,7 @@ void StringConvert::toFile(const String &output, ByteArray fileName, UINT codePa
     std::ofstream fout(fileName.c_str());
     if (!fout) {
         Logger::slog("cannot open output file " + fileName);
+        return;
     }
     fout << converted;
 }

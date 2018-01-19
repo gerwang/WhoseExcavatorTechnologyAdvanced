@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\Test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\CSVHandler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\StringConvert.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\Logger.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\HttpRequest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\HTMLParser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\DomNode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\cQuery.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\Crawler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\WordDivider.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\ArrayList.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\Test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\BasicString.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\Stack.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\LinkedList.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\HashSet.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\Utility.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\CSVHandler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\StringConvert.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\Logger.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\HttpRequest.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\HTMLParser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\DomNode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\cQuery.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\Crawler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\WordDivider.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="D:\Gerwa\CLionProjects\WhoseExcavatorTechnologyAdvanced\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{5C881B69-EEBA-3FC4-8FD5-3C48C64EC113}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{3F95221E-0D40-3481-9C4A-D1EBB7EBF820}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

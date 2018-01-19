@@ -101,7 +101,9 @@ public:
         if (m_container[index].find(val) == m_container[index].end()) {
             m_container[index].push_back(val);
             m_size++;
+			return true;
         }
+		return false;
     }
 
     bool insert(key_type &&val) {
@@ -110,7 +112,9 @@ public:
         if (m_container[index].find(val) == m_container[index].end()) {
             m_container[index].push_back(std::move(val));
             m_size++;
+			return true;
         }
+		return false;
     }
 
     bool erase(const key_type &val) {
@@ -119,7 +123,9 @@ public:
         if (it != m_container[index].end()) {
             m_container[index].erase(it);
             m_size--;
+			return true;
         }
+		return false;
     }
 
     /*!

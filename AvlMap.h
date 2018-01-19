@@ -6,8 +6,8 @@
 #define WHOSEEXCAVATORTECHNOLOGYADVANCED_AVLMAP_H
 
 #include <algorithm>
-#include "Utility.h"
 #include "Stack.h"
+#include <functional>
 
 #define Height(x) ((x)?(x)->height:-1)
 
@@ -107,7 +107,6 @@ class AvlMap {
                     o = o->ch[0];
                 }
                 delete pre;
-                pre = nullptr;
             } else {
                 node_type *succ = o->ch[1], *fa = o;
                 Stack<node_type *> link;
@@ -190,18 +189,36 @@ public:
         removeTree(root);
     }
 
+	/*!
+	 * 将一个键值对插入到树中，如果键已经存在则不会插入
+	 * @param key 待插入的键
+	 * @param value 待插入的值
+	 */
     void insert(const key_type &key, const value_type &value) {
         insert(root, key, value);
     }
 
+	/*!
+	 *删除对应的键值对
+	* @param key 待删除的键值
+	*/
     void erase(const key_type &key) {
         erase(root, key);
     }
 
+	/*!
+	 * 判断树中是否存在这个键值
+	 * @note 只可能返回0或者1
+	 * @param key 待查询的键值
+	 */
     int count(const key_type &key) {
         return find(root, key) == nullptr ? 0 : 1;
     }
 
+	/*!
+	 *	按照中序遍历整棵树，对每个结点调用回调函数
+	 * @param callback 对每个结点指针调用的函数
+	 */
     void traverse(const std::function<void(const node_type *)> &callback) {
         traverse(root, callback);
     }

@@ -349,6 +349,7 @@ String DomNode::innerHTML() {
         }
         return res;
     }
+	return String();
 }
 
 DomNode *DomNode::firstChild() {
